@@ -25,7 +25,7 @@ class Player {
     if (critical) {
       this.randomDmg = (this.atk - 5 + Math.floor(Math.random() * 11) * 2);  //크리티컬! 근데 이거  UI엔 어떻게 표기하지...
       if (this.anger = 1) { //분노 : 크리시 적 기절
-        monster.ready1 =1;
+        monster.ready1 = 1;
       }
     } else {
       this.randomDmg = this.atk - 5 + Math.floor(Math.random() * 11); //노크리 평타
@@ -75,8 +75,8 @@ class Monster {
     this.attackTurn = 0; //공격 패턴
     this.cur = 10; // 5, 10 스테이지에서, 10턴 후 즉사
     this.ready1 = 0;  //트리가드 평타, 마법사 스턴,   정예병 스턴, 여기사 스턴, 마왕 스턴
-    this.ready2 = 0;  //트리가드 속박, 마법사 공격,   정예병 찍기, 여기사 강공
-    this.ready3 = 0;  //              마법사 메테오, 정예병 분노
+    this.ready2 = 0;  //트리가드 속박, 마법사 공격,   정예병 찍기, 여기사 강공, 마왕 마력포
+    this.ready3 = 0;  //              마법사 메테오, 정예병 분노,             마왕 메테오
     this.def = 3; //마왕 실드량
   }
 
@@ -851,7 +851,13 @@ const battle = async (stage, player, monster) => {
 
           } else if (monster.ready2 === 1) { //마력포 장전시
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 마력포를 발사했습니다!`));
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 3}만큼의 피해를 입혔습니다!`));
@@ -864,6 +870,9 @@ const battle = async (stage, player, monster) => {
           } else if (monster.ready3 === 1) {
             logs.push(chalk.red(`하늘에서 메테오가 떨어집니다!!!`));
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
             if (player.hp <= 0 && player.revive === 1) {
@@ -907,7 +916,13 @@ const battle = async (stage, player, monster) => {
 
           } else if (monster.ready2 === 1) { //마력포 장전시
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 마력포를 발사했습니다!`));
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 3}만큼의 피해를 입혔습니다!`));
@@ -958,9 +973,16 @@ const battle = async (stage, player, monster) => {
 
           } else if (monster.ready2 === 1) { //마력포 장전시
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 마력포를 발사했습니다!`));
+            logs.push(chalk.red(`플레이어가 방어 자세를 취했지만, 막을 수가 없었습니다!`));
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 3}만큼의 피해를 입혔습니다!`));
             if (player.hp <= 0 && player.revive === 1) {
               player.hp = 10;
@@ -971,6 +993,9 @@ const battle = async (stage, player, monster) => {
           } else if (monster.ready3 === 1) {
             logs.push(chalk.yellow(`하늘에서 메테오가 떨어집니다!!!`));
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
             logs.push(chalk.red(`방어했으나, 도저히 막을 수가 없습니다!`));
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
@@ -1033,6 +1058,9 @@ const battle = async (stage, player, monster) => {
           } else if (monster.ready3 === 1) {
             logs.push(chalk.yellow(`하늘에서 메테오가 떨어집니다!!!`));
             monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
             monster.attack(player);
             logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
             if (player.hp <= 0 && player.revive === 1) {
@@ -1081,15 +1109,15 @@ const battle = async (stage, player, monster) => {
       ) {
         case "1": // 휘두르기
           monster.randomPattern(player)  //패턴받기
-          
-            player.attack(monster); // 플레이어 공격
-            logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.randomDmg}만큼의 피해를 입혔습니다!`));
-            if (monster.hp <= 0) {
-              break;
-            }
-            if (player.passive === 1) { //저주 패시브
-              monster.atk -= 1
-            }//플레이어 패턴
+
+          player.attack(monster); // 플레이어 공격
+          logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.randomDmg}만큼의 피해를 입혔습니다!`));
+          if (monster.hp <= 0) {
+            break;
+          }
+          if (player.passive === 1) { //저주 패시브
+            monster.atk -= 1
+          }//플레이어 패턴
 
           if (monster.ready1 === 1) { //스턴 상태일때
             logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
@@ -1123,7 +1151,7 @@ const battle = async (stage, player, monster) => {
               } // 부활로직
               monster.ready3 = 0;
             }
-            
+
           } else if (monster.ready2 === 1) { //내려찍기
             monster.attack(player);
             if (player.hp <= 0) {
@@ -1166,8 +1194,8 @@ const battle = async (stage, player, monster) => {
 
         case "2": //구르기
           monster.randomPattern(player)  //패턴받기
-            logs.push(chalk.green(`플레이어가 땅을 굴렀습니다!`));
-             //플레이어 패턴
+          logs.push(chalk.green(`플레이어가 땅을 굴렀습니다!`));
+          //플레이어 패턴
 
           if (monster.ready1 === 1) { //스턴 상태일때
             logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
@@ -1222,7 +1250,7 @@ const battle = async (stage, player, monster) => {
 
         case "3": //방어
           monster.randomPattern(player)  //패턴받기
-            
+
           //플레이어 패턴
 
           if (monster.ready1 === 1) { //스턴 상태일때
@@ -1355,11 +1383,11 @@ const battle = async (stage, player, monster) => {
 
         case "4": // 마탄 공격  
           monster.randomPattern(player)  //패턴받기
-            player.magic(monster); // 플레이어 공격
-            logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 피해를 입혔습니다!`));
-            if (monster.hp <= 0) {  // 몬스터 죽음!
-              break;
-            }//플레이어 패턴
+          player.magic(monster); // 플레이어 공격
+          logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 피해를 입혔습니다!`));
+          if (monster.hp <= 0) {  // 몬스터 죽음!
+            break;
+          }//플레이어 패턴
           if (monster.ready1 === 1) { //스턴 상태일때
             logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
             monster.ready1 = 0;
@@ -1447,26 +1475,26 @@ const battle = async (stage, player, monster) => {
     }
 
     if (stage === 9) {  // 타락한 여기사 
-    switch (
+      switch (
       choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
       ) {
         case "1": // 휘두르기
           monster.randomPattern(player)  //패턴받기
-          
-            player.attack(monster); // 플레이어 공격
-            logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.randomDmg}만큼의 피해를 입혔습니다!`));
-            if (monster.hp <= 0) {
-              break;
-            }
-            if (player.passive === 1) { //저주 패시브
-              monster.atk -= 1
-            }
-            if (monster.atk === 0) {
-              monster.hp = 0
-              break;
-            } //여기사 공격력 0
-            
-            //플레이어 패턴
+
+          player.attack(monster); // 플레이어 공격
+          logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.randomDmg}만큼의 피해를 입혔습니다!`));
+          if (monster.hp <= 0) {
+            break;
+          }
+          if (player.passive === 1) { //저주 패시브
+            monster.atk -= 1
+          }
+          if (monster.atk === 0) {
+            monster.hp = 0
+            break;
+          } //여기사 공격력 0
+
+          //플레이어 패턴
 
           if (monster.ready1 === 1) { //스턴 상태일때
             logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
@@ -1514,8 +1542,8 @@ const battle = async (stage, player, monster) => {
 
         case "2": //구르기
           monster.randomPattern(player)  //패턴받기
-            logs.push(chalk.green(`플레이어가 땅을 굴렀습니다!`));
-             //플레이어 패턴
+          logs.push(chalk.green(`플레이어가 땅을 굴렀습니다!`));
+          //플레이어 패턴
 
           if (monster.ready1 === 1) { //스턴 상태일때
             logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
@@ -1569,7 +1597,7 @@ const battle = async (stage, player, monster) => {
           } else if (monster.ready2 === 1) { //강공
             player.defence(monster);  //방어로직
             if (player.def === 1) { //방어 성공
-              
+
               logs.push(chalk.red(`'${monster.name}'가 플레이어에게 신성력을 방출했습니다!`));
               logs.push(chalk.green(`방어 성공! 데미지를 흡수합니다!`));
               player.def = 0;
@@ -1635,15 +1663,15 @@ const battle = async (stage, player, monster) => {
 
         case "4": // 마탄 공격  
           monster.randomPattern(player)  //패턴받기
-            player.magic(monster); // 플레이어 공격
-            logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 마법 피해를 입혔습니다!`));
-            if (monster.hp <= 0) {  // 몬스터 죽음!
-              break;
-            }
-            logs.push(chalk.red(`'${monster.name}'가 마탄에 맞아 마력을 회복합니다.`));
-            logs.push(chalk.red(`'${monster.name}'의 공격력이 증가합니다.`));
-            monster.atk += 1;
-            //플레이어 패턴
+          player.magic(monster); // 플레이어 공격
+          logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 마법 피해를 입혔습니다!`));
+          if (monster.hp <= 0) {  // 몬스터 죽음!
+            break;
+          }
+          logs.push(chalk.red(`'${monster.name}'가 마탄에 맞아 마력을 회복합니다.`));
+          logs.push(chalk.red(`'${monster.name}'의 공격력이 증가합니다.`));
+          monster.atk += 1;
+          //플레이어 패턴
 
 
           if (monster.ready1 === 1) { //스턴 상태일때
@@ -1706,261 +1734,279 @@ const battle = async (stage, player, monster) => {
 
     if (stage === 10) {  // 마왕 1페 
       switch (
-        choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
-        ) {
-          case "1": // 휘두르기
-            monster.randomPattern(player)  //패턴받기
-            
-              player.attack(monster); // 플레이어 공격
-              logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.randomDmg}만큼의 피해를 입혔습니다!`));
-              if (monster.hp <= 0) {
-                break;
-              }
-              if (player.passive === 1) { //저주 패시브
-                monster.atk -= 1
-              }
-              if (monster.atk === 0) {
-                monster.hp = 0
-                break;
-              } //여기사 공격력 0
-              
-              //플레이어 패턴
-  
-            if (monster.ready1 === 1) { //스턴 상태일때
-              logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
-              monster.ready1 = 0; //스턴 해제
-            } else if (monster.ready2 === 1) { //여기사 강공
-              monster.attack(player);  //1타
-              if (player.hp <= 0) {
-                player.hp = 1;
-              } // 연타공격 버그픽스
-              monster.attack(player);  //2타
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 신성력을 방출했습니다!`));
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-              monster.ready2 = 0; //강공 초기화
-            } else if (monster.attackTurn === 0) { //검기
-              monster.attack(player)
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 검기을 발사해, ${monster.randomDmg}만큼의 마법 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-            } else if (monster.attackTurn === 1) {  // 성검 휘두르기
-              monster.attack(player);
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 성검을 휘둘렀습니다!`));
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg}만큼의 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-            } else if (monster.attackTurn === 2) {
-              logs.push(chalk.yellow(`'${monster.name}'가 마왕의 저주에 고통스러워합니다!`));
-              logs.push(chalk.yellow(`'${monster.name}'가 전투 의지를 조금 잃어버립니다!`));
-              monster.atk -= 1;
-            } else if (monster.attackTurn === 3) {
-              logs.push(chalk.yellow(`'${monster.name}'가 성검에 신성력을 가득 담습니다!`));
-              monster.ready2 = 1;
+      choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
+      ) {
+        case "1": // 휘두르기
+          monster.randomPattern(player)  //패턴받기
+          if (monster.ready1 === 1) { //스턴 상태일때
+            logs.push(chalk.green(`'${monster.name}'이 스턴상태입니다!`));
+            logs.push(chalk.green(`'${monster.name}'의 방어막에 균열이 생겼습니다!`));
+            monster.ready1 = 0; //스턴 해제
+            monster.def -= 1;
+            if (monster.def === 0) {
+              monster.hp = 0;
             }
             break;
-  
-          case "2": //구르기
-            monster.randomPattern(player)  //패턴받기
-              logs.push(chalk.green(`플레이어가 땅을 굴렀습니다!`));
-               //플레이어 패턴
-  
-            if (monster.ready1 === 1) { //스턴 상태일때
-              logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
-              monster.ready1 = 0; //스턴 해제 
-            } else if (monster.ready2 === 1) { //강공
-              monster.attack(player);  //1타
-              if (player.hp <= 0) {
-                player.hp = 1;
-              } // 연타공격 버그픽스
-              monster.attack(player);  //2타
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 신성력을 방출했습니다!`));
-              logs.push(chalk.red(`플레이어가 땅을 굴렀으나 피할 수 없었습니다!`));
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-              monster.ready2 = 0; //강공 초기화
-            } else if (monster.attackTurn === 0) { //검기
-              monster.attack(player)
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 검기를 발사했습니다!`));
-              logs.push(chalk.red(`플레이어가 땅을 굴렀으나 검기에 맞아 ${monster.randomDmg}만큼의 마법 피해를 입었습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-            } else if (monster.attackTurn === 1) {  // 휘두르기
+          } else {
+            logs.push(chalk.yellow(`'${monster.name}'의 방어막에 공격이 막혔습니다!`));
+          }
+
+
+          if (monster.ready2 === 1) { //마왕 마력포
+            monster.attack(player);  //1타
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);  //2타
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마력포를 발사했습니다!`));
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready2 = 0; //마력포 초기화
+          } else if (monster.ready3 === 1) { //마왕 메테오
+            logs.push(chalk.red(`하늘에서 메테오가 떨어집니다!!!`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready3 = 0;
+          }
+          else if (monster.attackTurn === 0) { //마탄
+            monster.attack(player)
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마탄을 발사해, ${monster.randomDmg}만큼의 마법 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 1) {  // 마력포
+            logs.push(chalk.yellow(`'${monster.name}'이 마력을 응축시킵니다!`));
+            monster.ready2 = 1;
+          } else if (monster.attackTurn === 2) {
+            logs.push(chalk.red(`'${monster.name}'이 마력기둥을 소환해 떨어뜨립니다!`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 3) {
+            logs.push(chalk.yellow(`'${monster.name}'이 하늘에서 무언가를 불러옵니다!`));
+            monster.ready3 = 1;
+          }
+          break;
+
+        case "2": //구르기
+          monster.randomPattern(player)  //패턴받기
+          logs.push(chalk.green(`플레이어가 땅을 굴렀습니다!`));
+          //플레이어 패턴
+
+          if (monster.ready1 === 1) { //스턴 상태일때
+            logs.push(chalk.green(`'${monster.name}'이 아직 스턴상태입니다!`));
+            monster.ready1 = 0; //스턴 해제 
+          } else if (monster.ready2 === 1) { //강공
+            monster.attack(player);  //1타
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);  //2타
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마력포를 발사했습니다!`));
+            logs.push(chalk.red(`플레이어가 땅을 굴렀지만 피할 수 없었습니다.`));
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready2 = 0; //마력포 초기화
+          } else if (monster.ready3 === 1) { //마왕 메테오
+            logs.push(chalk.yellow(`하늘에서 메테오가 떨어집니다!!!`));
+            logs.push(chalk.green(`플레이어가 땅을 굴러 가까스로 메테오를 피합니다!`));
+            monster.ready3 = 0;
+          } else if (monster.attackTurn === 0) { //마탄
+            monster.attack(player)
+            logs.push(chalk.red(`'${monster.name}'가 플레이어에게 마탄을 발사했습니다!`));
+            logs.push(chalk.red(`플레이어가 땅을 굴렀으나 마탄에 맞아 ${monster.randomDmg}만큼의 마법 피해를 입었습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 1) {  // 마력포장전
+            logs.push(chalk.yellow(`'${monster.name}'이 마력을 응축시킵니다!`));
+            monster.ready2 = 1;
+          } else if (monster.attackTurn === 2) {
+            logs.push(chalk.red(`'${monster.name}'이 마력기둥을 소환해 떨어뜨립니다!`));
+            logs.push(chalk.green(`플레이어가 땅을 굴러 마력기둥을 피합니다!`));
+          } else if (monster.attackTurn === 3) {
+            logs.push(chalk.yellow(`'${monster.name}'이 하늘에서 무언가를 불러옵니다!`));
+            monster.ready3 = 1;
+          }
+          break;
+
+        case "3": //방어
+          monster.randomPattern(player)  //패턴받기
+          logs.push(chalk.green(`플레이어가 방어 자세를 취합니다!`));
+          //플레이어 패턴
+
+          if (monster.ready1 === 1) { //스턴 상태일때
+            logs.push(chalk.green(`'${monster.name}'이 아직 스턴상태입니다!`));
+            monster.ready1 = 0;
+          } else if (monster.ready2 === 1) { //강공
+            monster.attack(player);  //1타
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);  //2타
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마력포를 발사했습니다!`));
+            logs.push(chalk.red(`플레이어가 방어 자세를 취했지만, 막을 수 없었습니다.`));
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready2 = 0; //마력포 초기화
+          } else if (monster.ready3 === 1) { //마왕 메테오
+            logs.push(chalk.red(`하늘에서 메테오가 떨어집니다!!!`));
+            logs.push(chalk.red(`플레이어가 방어 자세를 취했지만, 막을 수 없었습니다.`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready3 = 0;
+          } else if (monster.attackTurn === 0) { //마탄
+            player.defence(monster);  //방어로직
+            if (player.def === 1) { //방어 성공
+              logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마탄을 발사했습니다!`));
+              logs.push(chalk.green(`방어 성공! 데미지를 흡수합니다!`));
+              player.def = 0;
+              break;
+            } else if (player.def === 0) { //방어 실패
               monster.attack(player);
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 성검을 휘둘렀습니다!`));
-              logs.push(chalk.green(`플레이어가 땅을 굴러 성검을 피했습니다!`));
-            } else if (monster.attackTurn === 2) {
-              logs.push(chalk.yellow(`'${monster.name}'가 마왕의 저주에 고통스러워합니다!`));
-              logs.push(chalk.yellow(`'${monster.name}'가 전투 의지를 조금 잃어버립니다!`));
-              monster.atk -= 1;
-            } else if (monster.attackTurn === 3) {
-              logs.push(chalk.yellow(`'${monster.name}'가 성검에 신성력을 가득 담습니다!`));
-              monster.ready2 = 1;
+              logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마탄을 발사했습니다!`));
+              logs.push(chalk.red(`방어 실패! '${monster.name}'이 플레이어에게 ${monster.randomDmg}만큼의 피해를 입혔습니다!`));
+              if (player.hp <= 0 && player.revive === 1) {
+                player.hp = 10;
+                player.revive = 0;
+                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+              }
+              break;
             }
-            break;
-  
-          case "3": //방어
-            monster.randomPattern(player)  //패턴받기
-            logs.push(chalk.green(`플레이어가 방어 자세를 취합니다!`));
-            //플레이어 패턴
-  
-            if (monster.ready1 === 1) { //스턴 상태일때
-              logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
-              monster.ready1 = 0;
-            } else if (monster.ready2 === 1) { //강공
-              player.defence(monster);  //방어로직
-              if (player.def === 1) { //방어 성공
-                
-                logs.push(chalk.red(`'${monster.name}'가 플레이어에게 신성력을 방출했습니다!`));
-                logs.push(chalk.green(`방어 성공! 데미지를 흡수합니다!`));
-                player.def = 0;
-                monster.ready2 = 0;
-                break;
-              } else if (player.def === 0) {
-                monster.attack(player);
-                logs.push(chalk.red(`'${monster.name}'가 플레이어에게 신성력을 방출했습니다!`));
-                logs.push(chalk.red(`방어 실패! '${monster.name}'가 플레이어에게 ${monster.randomDmg}만큼의 피해를 입혔습니다!`));
-                monster.ready2 = 0; //강공 초기화
-                if (player.hp <= 0 && player.revive === 1) {
-                  player.hp = 10;
-                  player.revive = 0;
-                  logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-                }
-                break;
-              }
-            } else if (monster.attackTurn === 0) { //검기
-              player.defence(monster);  //방어로직
-              if (player.def === 1) { //방어 성공
-                logs.push(chalk.red(`'${monster.name}'가 플레이어에게 검기를 발사했습니다!`));
-                logs.push(chalk.green(`방어 성공! 데미지를 흡수합니다!`));
-                player.def = 0;
-                break;
-              } else if (player.def === 0) {
-                monster.attack(player);
-                logs.push(chalk.red(`'${monster.name}'가 플레이어에게 검기를 발사했습니다!`));
-                logs.push(chalk.red(`방어 실패! '${monster.name}'가 플레이어에게 ${monster.randomDmg}만큼의 피해를 입혔습니다!`));
-                if (player.hp <= 0 && player.revive === 1) {
-                  player.hp = 10;
-                  player.revive = 0;
-                  logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-                }
-                break;
-              }
-            } else if (monster.attackTurn === 1) {  // 휘두르기
-              player.defence(monster);  //방어로직
-              if (player.def === 1) { //방어 성공
-                logs.push(chalk.red(`'${monster.name}'가 플레이어에게 성검을 휘둘렀습니다!`));
-                logs.push(chalk.green(`방어 성공! 데미지를 흡수합니다!`));
-                player.def = 0;
-                break;
-              } else if (player.def === 0) {
-                monster.attack(player);
-                logs.push(chalk.red(`'${monster.name}'가 플레이어에게 성검을 휘둘렀습니다!`));
-                logs.push(chalk.red(`방어 실패! '${monster.name}'가 플레이어에게 ${monster.randomDmg}만큼의 피해를 입혔습니다!`));
-                if (player.hp <= 0 && player.revive === 1) {
-                  player.hp = 10;
-                  player.revive = 0;
-                  logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-                }
-                break;
-              }
-            } else if (monster.attackTurn === 2) {
-              logs.push(chalk.yellow(`'${monster.name}'가 마왕의 저주에 고통스러워합니다!`));
-              logs.push(chalk.yellow(`'${monster.name}'가 전투 의지를 조금 잃어버립니다!`));
-              monster.atk -= 1;
-            } else if (monster.attackTurn === 3) {
-              logs.push(chalk.yellow(`'${monster.name}'가 성검에 신성력을 가득 담습니다!`));
-              monster.ready2 = 1;
-            }
-            break;
-  
-          case "4": // 마탄 공격  
-            monster.randomPattern(player)  //패턴받기
-              player.magic(monster); // 플레이어 공격
-              logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 마법 피해를 입혔습니다!`));
-              if (monster.hp <= 0) {  // 몬스터 죽음!
-                break;
-              }
-              logs.push(chalk.red(`'${monster.name}'가 마탄에 맞아 마력을 회복합니다.`));
-              logs.push(chalk.red(`'${monster.name}'의 공격력이 증가합니다.`));
-              monster.atk += 1;
-              //플레이어 패턴
-  
-  
-            if (monster.ready1 === 1) { //스턴 상태일때
-              logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
-              monster.ready1 = 0;
-            } else if (monster.ready2 === 1) { //강공
-              monster.attack(player);
-              if (player.hp <= 0) {
-                player.hp = 1;
-              } // 연타공격 버그픽스
-              monster.attack(player);
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 신성력을 방출했습니다!`));
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-              monster.ready2 = 0; //내려찍기 초기화
-            } else if (monster.attackTurn === 0) { //검기
-              monster.attack(player)
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 검기를 발사해, ${monster.randomDmg}만큼의 마법 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-            } else if (monster.attackTurn === 1) {  // 정예병 휘두르기
-              monster.attack(player);
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 성검을 휘둘렀습니다!`));
-              logs.push(chalk.red(`'${monster.name}'가 플레이어에게 ${monster.randomDmg}만큼의 피해를 입혔습니다!`));
-              if (player.hp <= 0 && player.revive === 1) {
-                player.hp = 10;
-                player.revive = 0;
-                logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-              } // 부활로직
-            } else if (monster.attackTurn === 2) {
-              logs.push(chalk.yellow(`'${monster.name}'가 마왕의 저주에 고통스러워합니다!`));
-              logs.push(chalk.yellow(`'${monster.name}'가 전투 의지를 조금 잃어버립니다!`));
-              monster.atk -= 1;
-            } else if (monster.attackTurn === 3) {
-              logs.push(chalk.yellow(`'${monster.name}'가 성검에 신성력을 가득 담습니다!`));
-              monster.ready2 = 1;
-            }
-            break;
-  
-          case "9":
-            monster.hp = 0;
-            break;
-  
-          case "0":
-            player.hp = 0;
-            console.log(chalk.red("당신은 도망쳤습니다."));
-            await delay(500);
-            console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
-            console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-            await delay(1000);
-        }
+          } else if (monster.attackTurn === 1) {  // 마력포장전
+            logs.push(chalk.yellow(`'${monster.name}'이 마력을 응축시킵니다!`));
+            monster.ready2 = 1;
+          } else if (monster.attackTurn === 2) {
+            logs.push(chalk.red(`'${monster.name}'이 마력기둥을 소환해 떨어뜨립니다!`));
+            logs.push(chalk.red(`플레이어가 방어 자세를 취했지만, 막을 수 없었습니다.`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 3) {
+            logs.push(chalk.yellow(`'${monster.name}'이 하늘에서 무언가를 불러옵니다!`));
+            monster.ready3 = 1;
+          }
+          break;
+
+        case "4": // 마탄 공격  
+          monster.randomPattern(player)  //패턴받기
+          logs.push(chalk.yellow(`'${monster.name}'의 방어막에 공격이 막혔습니다!`));
+          //플레이어 패턴
+
+
+          if (monster.ready2 === 1) { //마왕 마력포
+            logs.push(chalk.green(`'${monster.name}'의 마력포를 플레이어가 무력화시켰습니다!`));
+            logs.push(chalk.green(`'${monster.name}'이 1턴동안 혼란상태에 빠집니다!`));
+            monster.ready2 = 0;
+            monster.ready1 = 1;
+          } else if (monster.ready3 === 1) { //마왕 메테오
+            logs.push(chalk.red(`하늘에서 메테오가 떨어집니다!!!`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready3 = 0;
+          }
+          else if (monster.attackTurn === 0) { //마탄
+            monster.attack(player)
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마탄을 발사해, ${monster.randomDmg}만큼의 마법 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 1) {  // 마력포
+            logs.push(chalk.yellow(`'${monster.name}'이 마력을 응축시킵니다!`));
+            monster.ready2 = 1;
+          } else if (monster.attackTurn === 2) {
+            logs.push(chalk.red(`'${monster.name}'이 마력기둥을 소환해 떨어뜨립니다!`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 3) {
+            logs.push(chalk.yellow(`'${monster.name}'이 하늘에서 무언가를 불러옵니다!`));
+            monster.ready3 = 1;
+          }
+          break;
+
+        case "9":
+          monster.hp = 0;
+          break;
+
+        case "0":
+          player.hp = 0;
+          console.log(chalk.red("당신은 도망쳤습니다."));
+          await delay(500);
+          console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
+          console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
+          await delay(1000);
       }
+    }
 
 
 
@@ -2093,6 +2139,7 @@ const battle = async (stage, player, monster) => {
         console.log(chalk.white("하지만 여기까지일 것이다!"));
         await delay(1000);
         console.log(chalk.white("내가 뿌린 저주, 거두어 가도록 하지."));
+        await delay(1000);
       }
       if (stage === 11) {
         console.log(chalk.yellow(`'${monster.name}'이 쓰러졌습니다!`));
@@ -2187,7 +2234,7 @@ export async function startGame() {
         await battle(stage, player, monster);
         stage++;
         break;
-        case 11:
+      case 11:
         monster = new Monster("BOSS 마왕(final)", 500, 50);
         await battle(stage, player, monster);
         stage++;
