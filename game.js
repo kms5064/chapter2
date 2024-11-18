@@ -155,7 +155,7 @@ const battle = async (stage, player, monster) => {
     logs.push(chalk.green(`${choice}를 선택하셨습니다.`)); //logs(전투로그)에 choice push
 
     // if (choice === "1") {}  :  처음 제시했던 방법 : 항목이 많아질수록 관리가 힘들고 복잡해짐
-    if (stage === 1) {
+    if (stage === 1) { // 고블린
       //stage 1 전투 진행
       switch (
       choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
@@ -199,11 +199,11 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
-    if (stage === 2) {
+    if (stage === 2) { // 오크
       //stage 2 전투 진행
       switch (
       choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
@@ -281,11 +281,11 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
-    if (stage === 3) {
+    if (stage === 3) { //뱀파이어
       //stage 3 전투 진행
       switch (
       choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
@@ -375,11 +375,11 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
-    if (stage === 4) {
+    if (stage === 4) { // 마족병사
       switch (
       choice
       ) {
@@ -432,11 +432,11 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
-    if (stage === 5) {
+    if (stage === 5) { // 듀라한
       //stage 5 전투 진행
       switch (
       choice //선택받았을때 실행  switch ~ case break -> 여러 기능을 넣기 편함
@@ -585,8 +585,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
     if (stage === 6) {  //트리가드
@@ -835,8 +835,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
 
@@ -1115,8 +1115,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
 
@@ -1488,8 +1488,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
 
@@ -1748,8 +1748,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
 
@@ -2026,8 +2026,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
     if (stage === 11) {  // 마왕 2페 
@@ -2049,7 +2049,7 @@ const battle = async (stage, player, monster) => {
             logs.push(chalk.green(`'${monster.name}'가 아직 스턴상태입니다!`));
             monster.ready1 = 0; //스턴 해제
           } else if (monster.ready2 === 1) { //마왕 마력포
-             monster.attack(player);
+            monster.attack(player);
             if (player.hp <= 0) {
               player.hp = 1;
             } // 연타공격 버그픽스
@@ -2165,7 +2165,7 @@ const battle = async (stage, player, monster) => {
               monster.attack(player);
               logs.push(chalk.green(`플레이어가 방어 자세를 취합니다!`));
               logs.push(chalk.red(`'${monster.name}'가 플레이어에게 도끼를 내려찍었습니다!`));
-              logs.push(chalk.red(`방어 실패! '${monster.name}'가 플레이어에게 ${monster.randomDmg*2}만큼의 피해를 입혔습니다!`));
+              logs.push(chalk.red(`방어 실패! '${monster.name}'가 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
               monster.ready2 = 0; //내려찍기 초기화
               if (player.hp <= 0 && player.revive === 1) {
                 player.hp = 10;
@@ -2222,72 +2222,72 @@ const battle = async (stage, player, monster) => {
           break;
 
         case "4": // 마탄 공격  
-        monster.randomPattern(player)  //패턴받기
-        player.magic(monster); // 플레이어 공격
-        logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 마법 피해를 입혔습니다!`));
-        if (monster.hp <= 0) {  // 몬스터 죽음!
+          monster.randomPattern(player)  //패턴받기
+          player.magic(monster); // 플레이어 공격
+          logs.push(chalk.green(`플레이어가 '${monster.name}'에게 ${player.skillDmg}만큼의 마법 피해를 입혔습니다!`));
+          if (monster.hp <= 0) {  // 몬스터 죽음!
+            break;
+          }//플레이어 패턴
+
+
+          if (monster.ready2 === 1) { //마왕 마력포
+            monster.attack(player);  //1타
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);  //2타
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마력포를 발사했습니다!`));
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready2 = 0; //마력포 초기화
+          } else if (monster.ready3 === 1) { //마왕 메테오
+            logs.push(chalk.red(`하늘에서 메테오가 떨어집니다!!!`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+            monster.ready3 = 0;
+          }
+          else if (monster.attackTurn === 0) { //마탄
+            monster.attack(player)
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마탄을 발사해, ${monster.randomDmg}만큼의 마법 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 1) {  // 마력포
+            logs.push(chalk.yellow(`'${monster.name}'이 마력을 응축시킵니다!`));
+            monster.ready2 = 1;
+          } else if (monster.attackTurn === 2) {
+            logs.push(chalk.red(`'${monster.name}'이 마력기둥을 소환해 떨어뜨립니다!`));
+            monster.attack(player);
+            if (player.hp <= 0) {
+              player.hp = 1;
+            } // 연타공격 버그픽스
+            monster.attack(player);
+            logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
+            if (player.hp <= 0 && player.revive === 1) {
+              player.hp = 10;
+              player.revive = 0;
+              logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
+            } // 부활로직
+          } else if (monster.attackTurn === 3) {
+            logs.push(chalk.yellow(`'${monster.name}'이 하늘에서 무언가를 불러옵니다!`));
+            monster.ready3 = 1;
+          }
           break;
-        }//플레이어 패턴
-
-
-        if (monster.ready2 === 1) { //마왕 마력포
-          monster.attack(player);  //1타
-          if (player.hp <= 0) {
-            player.hp = 1;
-          } // 연타공격 버그픽스
-          monster.attack(player);  //2타
-          logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마력포를 발사했습니다!`));
-          logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
-          if (player.hp <= 0 && player.revive === 1) {
-            player.hp = 10;
-            player.revive = 0;
-            logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-          } // 부활로직
-          monster.ready2 = 0; //마력포 초기화
-        } else if (monster.ready3 === 1) { //마왕 메테오
-          logs.push(chalk.red(`하늘에서 메테오가 떨어집니다!!!`));
-          monster.attack(player);
-          if (player.hp <= 0) {
-            player.hp = 1;
-          } // 연타공격 버그픽스
-          monster.attack(player);
-          logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
-          if (player.hp <= 0 && player.revive === 1) {
-            player.hp = 10;
-            player.revive = 0;
-            logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-          } // 부활로직
-          monster.ready3 = 0;
-        }
-        else if (monster.attackTurn === 0) { //마탄
-          monster.attack(player)
-          logs.push(chalk.red(`'${monster.name}'이 플레이어에게 마탄을 발사해, ${monster.randomDmg}만큼의 마법 피해를 입혔습니다!`));
-          if (player.hp <= 0 && player.revive === 1) {
-            player.hp = 10;
-            player.revive = 0;
-            logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-          } // 부활로직
-        } else if (monster.attackTurn === 1) {  // 마력포
-          logs.push(chalk.yellow(`'${monster.name}'이 마력을 응축시킵니다!`));
-          monster.ready2 = 1;
-        } else if (monster.attackTurn === 2) {
-          logs.push(chalk.red(`'${monster.name}'이 마력기둥을 소환해 떨어뜨립니다!`));
-          monster.attack(player);
-          if (player.hp <= 0) {
-            player.hp = 1;
-          } // 연타공격 버그픽스
-          monster.attack(player);
-          logs.push(chalk.red(`'${monster.name}'이 플레이어에게 ${monster.randomDmg * 2}만큼의 피해를 입혔습니다!`));
-          if (player.hp <= 0 && player.revive === 1) {
-            player.hp = 10;
-            player.revive = 0;
-            logs.push(chalk.yellow(`'고블린의 집념'을 사용해 적의 공격에 한번 저항합니다!`));
-          } // 부활로직
-        } else if (monster.attackTurn === 3) {
-          logs.push(chalk.yellow(`'${monster.name}'이 하늘에서 무언가를 불러옵니다!`));
-          monster.ready3 = 1;
-        }
-        break;
 
         case "9":
           monster.hp = 0;
@@ -2300,8 +2300,8 @@ const battle = async (stage, player, monster) => {
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
           console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
+          await waiting();
+          console.clear();
       }
     }
 
@@ -2313,7 +2313,7 @@ const battle = async (stage, player, monster) => {
       console.log(chalk.red("게임 오버!"));
       console.log(chalk.red("당신은 죽었습니다."));
       console.log(chalk.gray(`<Press Enter>`));
-        await waiting();
+      await waiting();
       displayLobby(); // server로 이동 어떻게...?
       handleUserInput();
       break;
@@ -2334,7 +2334,7 @@ const battle = async (stage, player, monster) => {
 주변을 살펴보니, 용사가 이동한 흔적을 찾을 수 있었다.
 흔적을 따라가면 용사를 만날 수 있을 것이다.
           `));
-          console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red(`'상처입은 오크'를 마주쳤다!`));
@@ -2354,7 +2354,7 @@ const battle = async (stage, player, monster) => {
         console.log(chalk.magenta(`계속해서 용사의 흔적을 찾아 이동했다.
 용사가 모두를 죽인 이유도, 내가 스켈레톤이 된 이유도 아무것도 모르지만
 마왕에게 도달하면 모든 의문이 풀릴 것이다.`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("도망치던 뱀파이어를 마주쳤다!"));
@@ -2374,7 +2374,7 @@ console.log(chalk.gray(`<Press Enter>`));
         console.log(chalk.magenta(`용사를 보고 겁을 먹었는지, 도망치고 있던 뱀파이어를 처치했다.
 평범한 짐꾼이었을 땐, 절대 쓰러뜨리지 못했을 상대였지만, 어렵지않게 쓰러뜨릴 수 있었다.
 뱀파이어가 도망치던 반대 방향으로 계속 나아가자`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("부상당한 마족병사를 마주쳤다!"));
@@ -2396,7 +2396,7 @@ console.log(chalk.gray(`<Press Enter>`));
 왠지 모를 뿌듯함이 느껴진다.
 간신히 숨만 붙어있는 마족병사를 처치하자, 또다시 새로운 힘이 느껴진다.
 계속해서 나아가자`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("낫을 든 듀라한을 마주쳤다!"));
@@ -2418,7 +2418,7 @@ console.log(chalk.gray(`<Press Enter>`));
 하지만 용사는 듀라한쯤은 단칼에 흔적도 남기지 않았다.
 다시 용사를 만난다면, 나는 살아남을 수 있을까?
 그래도 내가 할 수 있는건 그녀의 흔적을 따라 가는 것뿐이다.`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("오염된 트리가드를 마주쳤다!"));
@@ -2441,7 +2441,7 @@ console.log(chalk.gray(`<Press Enter>`));
 성기사의 표본이라 불렸던 그 용사가 어째서 모두를 죽인 것일까.
 모든 의문은 용사를 만나야 풀릴 것이다.
 마왕이 있는 곳을 찾아내야한다.`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("마족 마법사를 마주쳤다!"));
@@ -2462,7 +2462,7 @@ console.log(chalk.gray(`<Press Enter>`));
         console.log(chalk.magenta(`길을 막는 마법사를 쓰러뜨리고, 마왕의 알현실 앞에 도착하였다.
 용사는 이미 안으로 들어간듯하지만, 아무런 소리가 들리지 않는 걸 보니 이미 상황은 끝난 것처럼 보인다.
 알현실 앞을 지키는 정예병을 쓰러뜨리고 들어가보자.`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("마족 정예병을 마주쳤다!"));
@@ -2481,11 +2481,11 @@ console.log(chalk.gray(`<Press Enter>`));
         console.clear();
         console.log(chalk.magenta(`알현실 문을 열고 안으로 들어가자, 마왕과 용사의 시선이 나에게 집중됐다.
 용사의 초점없는 눈은 인간으로써 마지막으로 보았던 눈과 같았다. 차갑고, 어둡고 아무런 의지가 담겨있지 않았다.`));
-await delay(1000);
-console.log(chalk.red(`「고작 스켈레톤이 여기까지 오다니 대단하구나, 하지만 너도 마물인 이상 용사를 어찌하진 못하겠지.」`));
-await delay(1000);
-console.log(chalk.red(`「쓰러뜨려보거라. 해낸다면 내가 직접 상대해주지. 쓰러뜨린다면 말이지.」`));
-console.log(chalk.gray(`<Press Enter>`));
+        await delay(1000);
+        console.log(chalk.red(`「고작 스켈레톤이 여기까지 오다니 대단하구나, 하지만 너도 마물인 이상 용사를 어찌하진 못하겠지.」`));
+        await delay(1000);
+        console.log(chalk.red(`「쓰러뜨려보거라. 해낸다면 내가 직접 상대해주지. 쓰러뜨린다면 말이지.」`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("타락한 여기사를 마주쳤다!"));
@@ -2505,11 +2505,11 @@ console.log(chalk.gray(`<Press Enter>`));
         console.log(chalk.magenta(`용사가 무릎꿇자, 마왕의 표정이 차갑게 굳었다.`));
         await delay(1000);
         console.log(chalk.red(`「너, 내가 처음에 걸었던 저주를 흡수했군. 그래서 용사가 날뛰었던 거였어.」`));
-await delay(1000);
-console.log(chalk.red(`「하지만 여기까지 오면 안됐다네. 고작 스켈레톤주제에 내가 심혈을 기울여 만든 인형을 망가뜨리다니.」`));
-await delay(1000);
-console.log(chalk.red(`「내가 뿌린 저주, 다시 거두어 가도록 하지」`));
-console.log(chalk.gray(`<Press Enter>`));
+        await delay(1000);
+        console.log(chalk.red(`「하지만 여기까지 오면 안됐다네. 고작 스켈레톤주제에 내가 심혈을 기울여 만든 인형을 망가뜨리다니.」`));
+        await delay(1000);
+        console.log(chalk.red(`「내가 뿌린 저주, 다시 거두어 가도록 하지」`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(chalk.red("BOSS 마왕을 마주쳤다!"));
@@ -2547,36 +2547,36 @@ console.log(chalk.gray(`<Press Enter>`));
 용사조차 해내지 못한 일을 파티에서 가장 약했던 내가 해내고야 말았다.
 하지만 지금의 나는 마왕이 뿌린 저주덩어리일 뿐이었다.
 마왕이 사라지자, 단단한 뼛조각들이 천천히 가루가되어 사라지기 시작했다.`));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
-console.log(chalk.blue("「당신이었군요. 제게 걸린 저주를 가져간 사람이」"));
-await delay(1000);
-console.log(chalk.blue("「기억나요 가장 약하기에 가장 마지막에 죽였죠.」"));
-await delay(1000);
-console.log(chalk.blue("「그런 당신이 저를 구했고, 마왕을 쓰러뜨려 세상을 구했어요.」"));
-await delay(1000);
-console.log(chalk.blue("「사실 가장 강인했던건 그 누구도 아닌 당신이었던 거에요요.」"));
-await delay(1000);
-console.log(chalk.blue("「고마워요, 그리고 미안해요. 당신을 찌르고, 당신에게 구원받고,」"));
-await delay(1000);
-console.log(chalk.blue("「당신에게 너무나 큰 짐을 안겨드렸네요.」"));
-await delay(1000);
-console.log(chalk.blue("「당신의 위대한 업적, 제가 평생 기억할게요.」"));
-await delay(1000);
-console.log(chalk.blue("「...부디 편히 쉬시길.」"));
-console.log(chalk.gray(`<Press Enter>`));
+        console.log(chalk.blue("「당신이었군요. 제게 걸린 저주를 가져간 사람이」"));
+        await delay(1000);
+        console.log(chalk.blue("「기억나요 가장 약하기에 가장 마지막에 죽였죠.」"));
+        await delay(1000);
+        console.log(chalk.blue("「그런 당신이 저를 구했고, 마왕을 쓰러뜨려 세상을 구했어요.」"));
+        await delay(1000);
+        console.log(chalk.blue("「사실 가장 강인했던건 그 누구도 아닌 당신이었던 거에요요.」"));
+        await delay(1000);
+        console.log(chalk.blue("「고마워요, 그리고 미안해요. 당신을 찌르고, 당신에게 구원받고,」"));
+        await delay(1000);
+        console.log(chalk.blue("「당신에게 너무나 큰 짐을 안겨드렸네요.」"));
+        await delay(1000);
+        console.log(chalk.blue("「당신의 위대한 업적, 제가 평생 기억할게요.」"));
+        await delay(1000);
+        console.log(chalk.blue("「...부디 편히 쉬시길.」"));
+        console.log(chalk.gray(`<Press Enter>`));
         await waiting();
         console.clear();
         console.log(
           chalk.cyan(
-              figlet.textSync('GAME CLEAR!', {
-                  font: 'Standard',
-                  horizontalLayout: 'default',
-                  verticalLayout: 'default'
-              })
+            figlet.textSync('GAME CLEAR!', {
+              font: 'Standard',
+              horizontalLayout: 'default',
+              verticalLayout: 'default'
+            })
           )
-      );
+        );
         await delay(500);
         console.log(chalk.gray(`<Press Enter>`));
         await waiting();
@@ -2589,7 +2589,7 @@ console.log(chalk.gray(`<Press Enter>`));
 };
 
 function waiting() {
-  if(readlineSync.question()){
+  if (readlineSync.question()) {
 
   };
   return 1234
@@ -2609,24 +2609,24 @@ export async function startGame() { ///게임 플레이중 사망 ->재시작했
   console.log(chalk.magenta(`우린 마왕을 쓰러뜨리기 위해 파티를 꾸려 마왕성으로 향하고 있었다.
 여신에게 축복받은 용사, 가장 강력한 마법사, 듬직한 방패기사 등 세상 누구와 싸워도 지지 않을 강력한 파티였지만,
 야영 중, 용사가 성검을 빼들자 아무것도 하지 못하고 몰살당하게 된다.`));
-    console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
-    console.log(chalk.magenta(`정신을 차리니 불타오르는 마차, 피와 사체가 흩뿌려진 초원이 보인다.
+  console.log(chalk.gray(`<Press any key>`));
+  await waiting();
+  console.clear();
+  console.log(chalk.magenta(`정신을 차리니 불타오르는 마차, 피와 사체가 흩뿌려진 초원이 보인다.
 살이 붙어있던 손과 팔, 온 몸이 뼈만 남은 채 덜그럭거리고 있었다.
 마치 마물인 스켈레톤이 된 모양이었다.
 마왕을 죽이기 위해 함께 떠난 동료들은 모두 죽임당했고, 용사는 홀로 마왕과 싸우기 위해 떠났다.
 `));
-console.log(chalk.gray(`<Press any key>`));
-    await waiting();
-    console.clear();
-console.log(chalk.magenta(`그 때, 고블린 한마리가 나타났다!
+  console.log(chalk.gray(`<Press any key>`));
+  await waiting();
+  console.clear();
+  console.log(chalk.magenta(`그 때, 고블린 한마리가 나타났다!
 고블린은 몰살당한 파티 사이를 어슬렁거리며 사체들을 쿡쿡 찔러보고있었다.
 들키지 않게 조용히 있으려 했으나, 나약한 스켈레톤으로 변한 몸이 덜그덕 거리며 고블린과 눈이 마주치고 말았다.
 고블린이 나무몽둥이를 들고 달려든다!`));
-          console.log(chalk.gray(`<Press any key>`));
-          await waiting();
-          
+  console.log(chalk.gray(`<Press any key>`));
+  await waiting();
+
   const player = new Player(100, 20); //플레이어의 체력, 공격력 배정
   let stage = 1;
   let monster;
