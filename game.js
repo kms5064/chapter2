@@ -198,7 +198,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
     if (stage === 2) {
@@ -278,7 +280,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
     if (stage === 3) {
@@ -370,7 +374,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
     if (stage === 4) {
@@ -425,7 +431,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
     if (stage === 5) {
@@ -576,7 +584,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
     if (stage === 6) {  //트리가드
@@ -824,7 +834,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
 
@@ -1102,7 +1114,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
 
@@ -1473,7 +1487,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
 
@@ -1731,7 +1747,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
 
@@ -2007,7 +2025,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
     if (stage === 11) {  // 마왕 2페 
@@ -2279,7 +2299,9 @@ const battle = async (stage, player, monster) => {
           await delay(500);
           console.log(chalk.red("언데드로 환생한 당신은 어디에도 가지 못하고 세상을 떠돌다가,"));
           console.log(chalk.red("마왕의 부하에게 발각당해 살해당합니다."));
-          await delay(1000);
+          console.log(chalk.gray(`<Press any key>`));
+    await waiting();
+    console.clear();
       }
     }
 
@@ -2580,8 +2602,9 @@ function nextStage(player, stage) {
   //몬스터의 체력과 공격력은, 스테이지마다 다른 전투패턴 때문에 직접 지정
 }
 
-export async function startGame() {
+export async function startGame() { ///게임 플레이중 사망 ->재시작했을때 사망한 스테이지로 돌아가는 버그
   //server에서 1입력하면 여기로 여기서 플레이어의 체력, 공격력, 몬스터의 체력, 공격력 배정
+
   console.clear();
   console.log(chalk.magenta(`우린 마왕을 쓰러뜨리기 위해 파티를 꾸려 마왕성으로 향하고 있었다.
 여신에게 축복받은 용사, 가장 강력한 마법사, 듬직한 방패기사 등 세상 누구와 싸워도 지지 않을 강력한 파티였지만,
@@ -2605,7 +2628,7 @@ console.log(chalk.magenta(`그 때, 고블린 한마리가 나타났다!
           await waiting();
           
   const player = new Player(100, 20); //플레이어의 체력, 공격력 배정
-  let stage = 1; //스테이지 1불러오기
+  let stage = 1;
   let monster;
 
   while (stage <= 11) {
